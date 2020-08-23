@@ -18,12 +18,19 @@ export const setData = (value) => {
     val: value,
   };
 };
-export const fetchData = (page) => {
-  return (dispatch) => {
+export const setFilters = (value) => {
+  return {
+    type: actionTypes.FILTERS,
+    val: value,
+  };
+};
+export const fetchData = (page, filters) => {
+  const preparedFilter = filters.values.length !== 0 ? [filters] : [];
+  return function (dispatch) {
     axios({
-      data: {page},
-      method: 'post',
-      url: "http://nyx.vima.ekt.gr:3000/api/books"
+      data: { page, preparedFilter },
+      method: "post",
+      url: "http://nyx.vima.ekt.gr:3000/api/books",
     })
       .then((response) => {
         dispatch(setCount(response.data.count));
