@@ -3,6 +3,7 @@ import { updateObject } from "../utility";
 const initialState = {
   index: 1,
   count: 0,
+  filters: { type: "all", values: [] },
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,6 +14,8 @@ const reducer = (state = initialState, action) => {
       return updateObject(state, { data: action.val });
     case actionTypes.COUNT:
       return updateObject(state, { count: action.val });
+    case actionTypes.FILTERS:
+      return updateObject(state, { filters: action.val });
     default:
       return state;
   }

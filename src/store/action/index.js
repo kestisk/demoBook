@@ -1,1 +1,1 @@
-export { setIndex,fetchData,setData,setCount } from "./list";
+export { setIndex, fetchData, setData, setCount, setFilters } from "./list";
